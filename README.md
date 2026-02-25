@@ -1,2 +1,3 @@
 # test_data-monitoring-system
-test project ,data pipeline and monitoring
+
+data pipeline : συλλογή μετρήσεων απο αισθητήρες με MQTT ,  αποθήκευση σε TimescaleDB και ανάκτηση τους μεσω FastAPI 
