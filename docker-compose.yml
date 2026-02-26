@@ -12,9 +12,8 @@ services:
       POSTGRES_USER: postgres #database username 
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: foo #ονομα βασης που θα μπουν οι πινακες
-      ports:
-        - "5432:5432" #port standard 
-      volumes:
-        - ./db_data:/var/lib/postgresql/data #μονιμη αποθηκευση δεδομενων 
-        
-        
+    ports:
+      - "5432:5432" #port standard 
+    volumes:
+      - ./db_data:/var/lib/postgresql/data #μονιμη αποθηκευση δεδομενων 
+
