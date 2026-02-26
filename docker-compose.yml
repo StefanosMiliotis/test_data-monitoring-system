@@ -46,3 +46,15 @@ services:
       DEVICE_NAME: sensor_3 #ονομα αισθητηρα 
     depends_on:
       - mosquitto #ξεκιναει publisher μετα απο mosquitto 
+
+  subscriber: 
+    build:
+      dockerfile: Dockerfile.subscriber #αρχειο με οδηγιες για subscriber
+    environment:
+      MQTT_BROKER: mosquitto
+      DATABASE_URL: postgresql+asyncpg://postgres:postgres@db:5432/foo #ρυθμιση συνδεσης για timescaledb
+    depends_on: 
+      - mosquitto
+      - db #εξαρτηση και απο βαση δεδομενων - γραφει στο db
+
+
