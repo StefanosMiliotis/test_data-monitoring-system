@@ -17,3 +17,32 @@ services:
     volumes:
       - ./db_data:/var/lib/postgresql/data #μονιμη αποθηκευση δεδομενων 
 
+  publisher_1:
+    build: 
+      dockerfile: Dockerfile.publisher #ονομα αρχειου με οδηγιες για τους publishers
+      #no ports , στελνει μονο δεδομενα 
+    environment:
+      MQTT_BROKER: mosquitto #broker ειναι το container mosquitto 
+      DEVICE_NAME: sensor_1 #ονομα αισθητηρα 
+    depends_on:
+      - mosquitto #ξεκιναει publisher μετα απο mosquitto 
+
+  publisher_2:
+    build: 
+      dockerfile: Dockerfile.publisher #ονομα αρχειου με οδηγιες για τους publishers
+      #no ports , στελνει μονο δεδομενα 
+    environment:
+      MQTT_BROKER: mosquitto #broker ειναι το container mosquitto 
+      DEVICE_NAME: sensor_2 #ονομα αισθητηρα 
+    depends_on:
+      - mosquitto #ξεκιναει publisher μετα απο mosquitto 
+
+  publisher_3:
+    build: 
+      dockerfile: Dockerfile.publisher #ονομα αρχειου με οδηγιες για τους publishers
+      #no ports , στελνει μονο δεδομενα 
+    environment:
+      MQTT_BROKER: mosquitto #broker ειναι το container mosquitto 
+      DEVICE_NAME: sensor_3 #ονομα αισθητηρα 
+    depends_on:
+      - mosquitto #ξεκιναει publisher μετα απο mosquitto 
