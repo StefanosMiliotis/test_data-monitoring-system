@@ -1,0 +1,20 @@
+services:
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    ports: 
+      - "1883:1883" #mqtt port standard , mapping host port to docker port 
+    volumes: 
+      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf #config volume - οδηγιες 
+  
+  db:
+    image: timescale/timescaledb:latest-pg18 #timescaledb light για λογους απλοτητας - αποθηκευση μεσα στο dokcer
+    environment:
+      POSTGRES_USER: postgres #database username 
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: foo #ονομα βασης που θα μπουν οι πινακες
+      ports:
+        - "5432:5432" #port standard 
+      volumes:
+        - ./db_data:/var/lib/postgresql/data #μονιμη αποθηκευση δεδομενων 
+        
+        
