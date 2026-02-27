@@ -2,6 +2,7 @@ import json
 import os
 import time
 import random 
+import datetime
 from paho.mqtt import client as mqtt_client
 
 #TCP Connection
@@ -26,3 +27,36 @@ def connect_mqtt(): #χρησιμοποιηθηκε paho-mqtt version 2 για �
     client.on_connect = on_connect
     client.connect(broker, port)
     return client
+
+
+#Tα μηνύματα αυτών θα είναι πχ ,
+# {
+#   "device_name": "sensor_01",
+#   "timestamp": "2026-02-01T08:30:00Z",
+#   "value": 2
+# }
+
+#Create a while loop that sends a message every second to the topic /publishers/data,
+#and exits the loop after sending five messages.
+
+ def publish(client):
+     msg_count = 1
+     while True:
+         time.sleep(1)
+
+         payload = { 
+             "device_name": device_name,
+             "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat().replace("+00:00", "Z"),
+            #  "value":
+         }
+         msg = json.dumps(payload)
+         result = client.publish(topic, msg)
+         # result: [0, 1]
+         status = result[0]
+         if status == 0:
+             print(f"Send `{msg}` to topic `{topic}`")
+         else:
+             print(f"Failed to send message to topic {topic}")
+         msg_count += 1
+         if msg_count > 5:
+             break   
