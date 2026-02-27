@@ -3,11 +3,6 @@
 ## Αρχιτεκτονική 
 συλλογή μετρήσεων απο αισθητήρες με MQTT ,  αποθήκευση σε TimescaleDB και ανάκτηση τους μεσω FastAPI 
 
-├── docker-compose.yml
-├── publisher/
-│   ├── publisher.py
-
-
 Publishers(1-3) (αισθητήρες) → Mosquitto broker (διακινηση mqtt messages) → Subscriber (παραλήπτης , λαμβανει και καταγραφει messages στην database) → Database 
 ![Screenshot](pipeline.png)
 
