@@ -11,3 +11,7 @@ Publishers(1-3) (αισθητήρες) → Mosquitto broker (διακινηση 
 
 27/02/2026 MQTT Publisher , `implemented publisher.py` με paho-mqtt library 2.0 version (https://www.emqx.com/en/blog/how-to-use-mqtt-in-python#auto-reconnect)
     -json payload (device_name, timestamp{ISO 8601 UTC})
+
+28/02/2026 Ολοκλήρωση publisher.py
+
+01/03/2026 Dockerfile for publisher 
