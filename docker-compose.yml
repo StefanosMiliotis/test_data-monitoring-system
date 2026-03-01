@@ -24,7 +24,7 @@ services:
       #no ports , στελνει μονο δεδομενα 
     environment:
       MQTT_BROKER: mosquitto #broker ειναι το container mosquitto 
-      DEVICE_NAME: sensor_1 #ονομα αισθητηρα 
+      DEVICE_NAME: sensor_01 #ονομα αισθητηρα 
     depends_on:
       - mosquitto #ξεκιναει publisher μετα απο mosquitto 
 
@@ -35,7 +35,7 @@ services:
       #no ports , στελνει μονο δεδομενα 
     environment:
       MQTT_BROKER: mosquitto #broker ειναι το container mosquitto 
-      DEVICE_NAME: sensor_2 #ονομα αισθητηρα 
+      DEVICE_NAME: sensor_02 #ονομα αισθητηρα 
     depends_on:
       - mosquitto #ξεκιναει publisher μετα απο mosquitto 
 
@@ -46,7 +46,7 @@ services:
       #no ports , στελνει μονο δεδομενα 
     environment:
       MQTT_BROKER: mosquitto #broker ειναι το container mosquitto 
-      DEVICE_NAME: sensor_3 #ονομα αισθητηρα 
+      DEVICE_NAME: sensor_03 #ονομα αισθητηρα 
     depends_on:
       - mosquitto #ξεκιναει publisher μετα απο mosquitto 
 
