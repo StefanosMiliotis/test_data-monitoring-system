@@ -19,6 +19,7 @@ services:
 
   publisher_1:
     build: 
+      context: ./publisher #φακελος
       dockerfile: Dockerfile.publisher #ονομα αρχειου με οδηγιες για τους publishers
       #no ports , στελνει μονο δεδομενα 
     environment:
@@ -28,7 +29,8 @@ services:
       - mosquitto #ξεκιναει publisher μετα απο mosquitto 
 
   publisher_2:
-    build: 
+    build:
+      context: ./publisher #φακελος
       dockerfile: Dockerfile.publisher #ονομα αρχειου με οδηγιες για τους publishers
       #no ports , στελνει μονο δεδομενα 
     environment:
@@ -39,6 +41,7 @@ services:
 
   publisher_3:
     build: 
+      context: ./publisher #φακελος
       dockerfile: Dockerfile.publisher #ονομα αρχειου με οδηγιες για τους publishers
       #no ports , στελνει μονο δεδομενα 
     environment:
