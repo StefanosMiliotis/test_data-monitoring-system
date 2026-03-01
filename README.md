@@ -14,4 +14,4 @@ Publishers(1-3) (αισθητήρες) → Mosquitto broker (διακινηση 
 
 28/02/2026 Ολοκλήρωση publisher.py
 
-01/03/2026 Dockerfile for publisher 
+01/03/2026 Dockerfile for publisher & subscriber 
