@@ -6,13 +6,16 @@
 Publishers(1-3) (αισθητήρες) → Mosquitto broker (διακινηση mqtt messages) → Subscriber (παραλήπτης , λαμβανει και καταγραφει messages στην database) → Database 
 ![Screenshot](pipeline.png)
 
+* **MQTT Broker:** Χρήση του [Eclipse Mosquitto](https://hub.docker.com/_/eclipse-mosquitto) μέσω Docker για τη διακίνηση των μηνυμάτων.
+* **MQTT Clients (Publishers/Subscriber):** Ανάπτυξη σε Python 3.11 με τη βιβλιοθήκη `paho-mqtt`, [EMQX Guide](https://www.emqx.com/en/blog/how-to-use-mqtt-in-python).
+* **Database:** [TimescaleDB](https://www.tigerdata.com/docs/self-hosted/latest/install/installation-docker) 
 ## Τρέχον Στάδιο
 
 **26/02/2026**
 * **Ολοκληρωθηκε το `docker-compose.yml`**
 
 **27/02/2026 MQTT Publisher**
-* **`implemented publisher.py` με paho-mqtt library 2.0 version (https://www.emqx.com/en/blog/how-to-use-mqtt-in-python#auto-reconnect)**
+* **`implemented publisher.py`** με paho-mqtt library 2.0 version (https://www.emqx.com/en/blog/how-to-use-mqtt-in-python#auto-reconnect)
     * -json payload (device_name, timestamp{ISO 8601 UTC})
 
 **28/02/2026 Ολοκλήρωση publisher.py**
@@ -23,7 +26,7 @@ Publishers(1-3) (αισθητήρες) → Mosquitto broker (διακινηση 
 * **-update mosquitto.conf**
 * **-update publishers.py**
 * **-add & complete subscribers.py**
-* **-database setup: δημιουργία πίνακα sensors_data και μετατροπή σε hypertable**
+* **-database setup: δημιουργία πίνακα sensors_data και μετατροπή σε hypertable**[TimescaleDB](https://www.tigerdata.com/docs/self-hosted/latest/install/installation-docker)
 * **-fixed bugs :**
     * **Connection Refused (Mosquitto)**
         broker απερριπτε συνδεσεις, λυθηκε μεσω mosquitto.conf
