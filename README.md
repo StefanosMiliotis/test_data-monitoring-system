@@ -23,7 +23,7 @@ Publishers(1-3) (αισθητήρες) → Mosquitto broker (διακινηση 
 * **-update mosquitto.conf**
 * **-update publishers.py**
 * **-add & complete subscribers.py**
-* **-add retry loops**
+* **-database setup: δημιουργία πίνακα sensors_data και μετατροπή σε hypertable**
 * **-fixed bugs :**
     * **Connection Refused (Mosquitto)**
         broker απερριπτε συνδεσεις, λυθηκε μεσω mosquitto.conf
