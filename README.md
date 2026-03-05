@@ -1,4 +1,6 @@
-# test_data-monitoring-system
+# IoT Monitoring System 
+
+## MQTT-based Sensor Monitoring System with TimescaleDB
 
 ## Αρχιτεκτονική 
 συλλογή μετρήσεων απο αισθητήρες με MQTT ,  αποθήκευση σε TimescaleDB και ανάκτηση τους μεσω FastAPI 
