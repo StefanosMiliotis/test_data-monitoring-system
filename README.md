@@ -5,7 +5,8 @@
 ## Architecture 
 Collection of sensor measurements with MQTT, storage in TimescaleDB, and retrieval through FastAPI.
 
-Publishers (1-3) (sensors) → Mosquitto broker (mqtt message handling) → Subscriber (receiver, receives and records messages in database) → Database
+* **Data Flow :**
+**Publishers (Sensors) → Mosquitto Broker → Subscriber → TimescaleDB ← FastAPI ← End User**
 
 ![Screenshot](pipeline.png)
 
