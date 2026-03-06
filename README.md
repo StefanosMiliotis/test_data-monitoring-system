@@ -1,6 +1,4 @@
-# IoT Monitoring System 
-
-## MQTT-based Sensor Monitoring System with TimescaleDB
+# IoT Monitoring System - MQTT-based Sensor Monitoring System with TimescaleDB
 
 ## Architecture 
 Collection of sensor measurements with MQTT, storage in TimescaleDB, and retrieval through FastAPI.
