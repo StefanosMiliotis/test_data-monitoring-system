@@ -65,4 +65,11 @@ services:
       - mosquitto
       - db #εξαρτηση και απο βαση δεδομενων - γραφει στο db
 
-
+api: 
+    build:
+      context: ./api # Ο φάκελος που έχει το main.py
+      dockerfile: Dockerfile.api # Το αρχείο οδηγιών για το FastAPI
+    ports:
+      - "8000:8000" # Απαραίτητο για να ανοίγει η σελίδα στο http://localhost:8000
+    depends_on: 
+      - db # Εξασφαλίζει ότι το API ξεκινάει αφού έχει ξεκινήσει η βάση

@@ -1,0 +1,15 @@
+# Χρησιμοποιούμε ελαφριά έκδοση της Python
+FROM python:3.11-slim
+
+# Ορίζουμε τον φάκελο εργασίας μέσα στο container
+WORKDIR /app
+
+# Αντιγράφουμε πρώτα τα requirements και τα κάνουμε install
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Αντιγράφουμε τον κώδικά μας (main.py)
+COPY . .
+
+# Η εντολή που θα τρέξει το FastAPI όταν σηκωθεί το container
+CMD ["fastapi", "run", "main.py", "--port", "8000"]
