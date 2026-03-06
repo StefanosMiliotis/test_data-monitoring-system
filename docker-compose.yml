@@ -65,7 +65,7 @@ services:
       - mosquitto
       - db #εξαρτηση και απο βαση δεδομενων - γραφει στο db
 
-api: 
+  api: 
     build:
       context: ./api # Ο φάκελος που έχει το main.py
       dockerfile: Dockerfile.api # Το αρχείο οδηγιών για το FastAPI
