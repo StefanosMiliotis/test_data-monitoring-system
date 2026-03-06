@@ -1,0 +1,7 @@
+#docker library instructions
+fastapi[standard]
+pydantic
+# Χρήση της pre-compiled (binary) έκδοσης του PostgreSQL driver.
+# Παρακάμπτει την ανάγκη εγκατάστασης C compilers (π.χ. gcc) στο ελαφρύ Docker container (python-slim).
+psycopg2-binary 
+
