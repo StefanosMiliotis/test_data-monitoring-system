@@ -12,8 +12,44 @@ Publishers (1-3) (sensors) → Mosquitto broker (mqtt message handling) → Subs
 * **MQTT Broker:** Using [Eclipse Mosquitto](https://hub.docker.com/_/eclipse-mosquitto) via Docker for message handling.
 * **MQTT Clients (Publishers/Subscriber):** Developed in Python 3.11 with `paho-mqtt` library,, [EMQX Guide](https://www.emqx.com/en/blog/how-to-use-mqtt-in-python).
 * **Database:** [TimescaleDB](https://www.tigerdata.com/docs/self-hosted/latest/install/installation-docker) 
+* **REST API:** Built with [FastAPI](https://fastapi.tiangolo.com/) , it has 2 endpoints :
+    * **/raw/data** returns raw data of sensor records.
+    * **/sum/data** returns sum of those values.
 
-## Current Stage
+## How to Run
+1. Clone the repo :
+```bash
+git clone https://github.com/StefanosMiliotis/test_data-monitoring-system.git
+cd test_data-monitoring-system
+```
+2. Start the system with Docker Compose : 
+```bash
+docker-compose up --build -d
+```
+3. Access API 
+Once containers are up , open the following in your browser : 
+* **Swagger UI: http://localhost:8000/docs**
+* **Redoc: http://localhost:8000/redoc**
+
+* **API Usage Example**
+    1. Open Swagger UI.
+
+    2. Expand the POST /raw/data or POST /sum/data endpoint.
+
+    3. Click "Try it out".
+
+    4. Paste the following JSON into the Request Body:
+        ```json
+        {
+        "device_name": "sensor_01",
+        "start_day": "2026-03-01T00:00:00Z",
+        "end_day": "2026-03-10T23:59:59Z"
+        }
+        ```
+    5. Click "Execute" to view the response from the database.
+
+![Screenshot](docs.png)
+
 
 **26/02/2026**
 * **Completed `docker-compose.yml`**
@@ -40,3 +76,5 @@ Publishers (1-3) (sensors) → Mosquitto broker (mqtt message handling) → Subs
         problem with on_connect parameters, solved with CallbackAPIVersion.VERSION2 and properties=None of the subscriber
     * **SQL Insert Data Mismatch**
         sql query in the subscriber was using NOW() from database instead of timestamp from sensor JSON
+
+**06/03/2026 Rest API Implementation**
