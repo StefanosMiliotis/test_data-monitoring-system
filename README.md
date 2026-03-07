@@ -11,7 +11,7 @@ Publishers (Sensors) → Mosquitto Broker → Subscriber → TimescaleDB ← Fas
 ![Screenshot](pipeline.png)
 
 * **MQTT Broker:** Using [Eclipse Mosquitto](https://hub.docker.com/_/eclipse-mosquitto) via Docker for message handling.
-* **MQTT Clients (Publishers/Subscriber):** Developed in Python 3.11 with `paho-mqtt` library,, [EMQX Guide](https://www.emqx.com/en/blog/how-to-use-mqtt-in-python).
+* **MQTT Clients (Publishers/Subscriber):** Developed in Python 3.11 with `paho-mqtt` library, [EMQX Guide](https://www.emqx.com/en/blog/how-to-use-mqtt-in-python).
 * **Database:** [TimescaleDB](https://www.tigerdata.com/docs/self-hosted/latest/install/installation-docker) 
 * **REST API:** Built with [FastAPI](https://fastapi.tiangolo.com/) , it has 2 endpoints :
     * **/raw/data** returns raw data of sensor records.
