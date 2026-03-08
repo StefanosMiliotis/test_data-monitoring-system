@@ -10,11 +10,11 @@ Collection of sensor measurements with MQTT, storage in TimescaleDB, and retriev
 
 * **MQTT Broker:** Using [Eclipse Mosquitto](https://hub.docker.com/_/eclipse-mosquitto) via Docker for message handling.
 * **MQTT Clients (Publishers/Subscriber):** Developed in Python 3.11 with `paho-mqtt` library, [EMQX Guide](https://www.emqx.com/en/blog/how-to-use-mqtt-in-python).
-* **Database:** [TimescaleDB](https://www.tigerdata.com/docs/self-hosted/latest/install/installation-docker) 
+* **Database:** [TimescaleDB](https://www.tigerdata.com/docs/self-hosted/latest/install/installation-docker) - Automated initialization using a `init.sql` script for table creation and hypertables conversion.
 * **REST API:** Built with [FastAPI](https://fastapi.tiangolo.com/) , it has 2 endpoints :
     * **/raw/data** returns raw data of sensor records.
     * **/sum/data** returns sum of those values.
-* **Monitoring:** Track CPU and RAM metrics of all containers in real time. cAdvisor collects container metrics , Prometheus saves them and Grafana handles the visualization
+* **Monitoring:** Track CPU and RAM metrics of all containers in real time. Automated deployment of : cAdvisor (collects container metrics) , Prometheus (saves them) and Grafana (handles the visualization). Pre-configured data source and dashboard with `yml` and `json` config files (`/grafana/provisioning`) to have dashboard ready upon startup.
 
 ## How to Run
 1. **Clone the repo :**
@@ -57,6 +57,7 @@ Open the following in your browser :
 * **http://localhost:3000**
     * username : admin
     * password : admin
+* **Click on Dashboards**
 
 ![Screenshot](metrics.png)
 
@@ -94,3 +95,9 @@ Open the following in your browser :
 * Built a custom dashboard with the following queries : 
     * `rate(container_cpu_usage_seconds_total[1m])`
     * `container_memory_usage_bytes`
+
+**08/03/2026 Automation**
+* **- Database & Grafana Automation:** Automated the initialization of TimescaleDB (`init.sql`) and of Grafana dashboard.
+* **- JSON Payload Fix:** Fixed conflict between sensors data and database structure by updating the database to use `payload` (JSONB) column instead of int column (`value`).
+* **- API & Subscriber Update:** Updated `subscriber.py` with `json.dumps()` and FastAPI (`main.py`) with `payload->>'value'` to properly handle JSON data.
+* **- Resolved Grafana Dashboard Issue** Updated dashboard settings.
