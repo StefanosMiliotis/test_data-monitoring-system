@@ -3,13 +3,13 @@ services:
     image: eclipse-mosquitto:latest
     ports: 
       - "1883:1883" #mqtt port standard , mapping host port to docker port 
-    volumes: 
+    volumes: #αρχειο με τις οδηγιες για τον mosquitto
       - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf #config volume - οδηγιες 
   
   db:
     image: timescale/timescaledb:latest-pg16 #timescaledb light για λογους απλοτητας - αποθηκευση μεσα στο dokcer
     container_name: db
-    environment:
+    environment: #περιβαλλοντικες μεταβλητες
       POSTGRES_USER: postgres #database username 
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: foo #ονομα βασης που θα μπουν οι πινακες
@@ -17,14 +17,14 @@ services:
       - "5432:5432" #port standard 
     volumes:
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql #volume map για να τρεξει το αρχικο sql script που δημιουργει τον πινακα στην βαση δεδομενων
-      - ./db_data:/var/lib/postgresql/data #μονιμη αποθηκευση δεδομενων 
+      - ./db_data:/var/lib/postgresql/data #μονιμη αποθηκευση δεδομενων
 
   publisher_1:
     build: 
       context: ./publisher #φακελος
       dockerfile: Dockerfile.publisher #ονομα αρχειου με οδηγιες για τους publishers
       #no ports , στελνει μονο δεδομενα 
-    environment:
+    environment: #περιβαλλοντικες μεταβλητες για να 
       MQTT_BROKER: mosquitto #broker ειναι το container mosquitto 
       DEVICE_NAME: sensor_01 #ονομα αισθητηρα 
     depends_on:

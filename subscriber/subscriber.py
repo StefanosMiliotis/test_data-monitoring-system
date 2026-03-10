@@ -40,8 +40,8 @@ def connect_db():
             print(f"Database connection failed, retrying in 2s... ({e})")
             time.sleep(2)
 
-def connect_mqtt() -> mqtt_client:
-    def on_connect(client, userdata, flags, rc, properties=None):
+def connect_mqtt() -> mqtt_client: #συναρτηση για συνδεση στον mqtt broker
+    def on_connect(client, userdata, flags, rc, properties=None): 
         #rc = return code
         if rc == 0: #επιτυχης συνδεση
             print("Connected to MQTT Broker!")
@@ -69,7 +69,7 @@ def connect_mqtt() -> mqtt_client:
     return client
 
 #συναρτηση που αποφασιζει τι θα γινει καθε φορα που ενας αισθητηρας στελνει δεδομενα
-def subscribe(client: mqtt_client, db_conn):
+def subscribe(client: mqtt_client, db_conn): 
     def on_message(client, userdata, msg):
         try:
             #μετατροπη σε dictionary 
@@ -91,7 +91,7 @@ def subscribe(client: mqtt_client, db_conn):
             
         except Exception as e:
             print(f"Σφάλμα κατά την αποθήκευση στη βάση: {e}")
-            db_conn.rollback() #ακυρωση αν σφαλμσ
+            db_conn.rollback() #ακυρωση αν σφαλμα
 
     #activate subscriber 
     client.subscribe(topic)
